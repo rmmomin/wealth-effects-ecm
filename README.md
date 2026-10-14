@@ -66,6 +66,35 @@ parameter vectors:
 See [reproduction details](docs/REPRODUCIBILITY.md) for units, horizon,
 configuration and verification.
 
+## Public data included
+
+All observational inputs used by this ECM adaptation come from publicly
+accessible sources: [BEA](https://www.bea.gov/products/national-income-and-product-accounts)
+consumption, income, transfers and GDP; Federal Reserve
+[Financial Accounts](https://www.federalreserve.gov/releases/z1/) credit and
+[Distributional Financial Accounts](https://www.federalreserve.gov/releases/z1/dataviz/dfa/)
+income-group wealth; [BLS](https://data.bls.gov/timeseries/LNS14000000)
+unemployment; and [Yahoo Finance](https://finance.yahoo.com/quote/%5EGSPC/history/)
+S&P 500 price observations. The calculation uses no private household
+microdata or licensed Datastream input.
+
+The exact frozen inputs used by the runner are committed in the data folder:
+
+| File | Contents |
+| --- | --- |
+| [quarterly_panel.csv](data/quarterly_panel.csv) | 148 quarters, 1989Q3–2026Q2: consumption, income, transfers, wealth, credit, unemployment, S&P prices and model transforms |
+| [gdp_accounting.csv](data/gdp_accounting.csv) | The same quarterly horizon: nominal and real GDP at annual rates, plus BEA's published PCE growth contribution |
+| [bootstrap_parameters.csv](data/bootstrap_parameters.csv) | Our estimated joint coefficient draws, 399 per model, for reproducing uncertainty |
+| [sources.json](data/sources.json) | Source identifiers, units, transformations, retained vintages and observed gaps |
+
+These files are sufficient to estimate both models and reproduce the results
+offline, without API credentials, new downloads or the original private
+research checkout. The bootstrap file contains model estimates rather than
+additional observational data. Provider raw archives and papers are linked
+through [the data documentation](docs/DATA_SOURCES.md); the release includes
+the derived numerical inputs used in the calculation. Source rights remain
+with the providers as described in [NOTICE.md](NOTICE.md).
+
 ## Methodology
 
 ### Variables and units
