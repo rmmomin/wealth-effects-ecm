@@ -1,0 +1,81 @@
+{
+  "frequency": "quarterly Q-DEC",
+  "sample": [
+    "1989Q3",
+    "2026Q2"
+  ],
+  "model_training": [
+    "1990Q1",
+    "2019Q4"
+  ],
+  "monetary_flow_units": "Actual-quarter billions of 2017-dollar PCE purchasing power",
+  "monetary_stock_units": "Quarter-end billions of 2017-dollar PCE purchasing power; not annualized",
+  "deflator": "PCE implicit price index, 2017=1",
+  "wealth_rank": "Bottom80/top20 by official DFA income percentile, not wealth percentile",
+  "BEA_vintage": "Workbook published August26,2026; this release preserves the research vintage rather than using September revisions",
+  "Z1_vintage": "September11,2026",
+  "sources": {
+    "BEA_consumption_income_GDP": "https://apps.bea.gov/national/Release/XLS/Survey/Section1All_xls.xlsx",
+    "BEA_income_transfers": "https://apps.bea.gov/national/Release/XLS/Survey/Section2All_xls.xlsx",
+    "Federal_Reserve_DFA": "https://www.federalreserve.gov/releases/z1/dataviz/dfa/",
+    "Federal_Reserve_Z1": "https://www.federalreserve.gov/releases/z1/",
+    "BLS_unemployment": "https://api.bls.gov/publicAPI/v2/timeseries/data/",
+    "SP500_public_quote_adaptation": "https://finance.yahoo.com/quote/%5EGSPC/history/"
+  },
+  "series_ids": {
+    "PCE_nominal": "DPCERC",
+    "PCE_real": "DPCERX",
+    "DPI": "A067RC",
+    "personal_current_transfers": "A577RC",
+    "credit_HH_NP_loans": "FL154135005.Q",
+    "unemployment": "LNS14000000",
+    "stock_price_index": "^GSPC",
+    "GDP_nominal": "A191RC",
+    "GDP_real": "A191RX",
+    "PCE_GDP_contribution": "DPCERY"
+  },
+  "quarterly_aggregation": {
+    "unemployment": "Three monthly seasonally adjusted rates, arithmetic mean; 2025Q4 uses only Nov/Dec because Oct was officially unavailable",
+    "SP500": "Unadjusted monthly Close in third month of quarter, quarter-end price index, not total return"
+  },
+  "incremental_retrieval": {
+    "bls_unemployment_2026.json": {
+      "source_url": "https://api.bls.gov/publicAPI/v2/timeseries/data/",
+      "series_id": "LNS14000000",
+      "used_months": "2026-01 through 2026-06; other reported months are not used",
+      "downloaded_utc": "2026-10-14T02:42:08.303759+00:00",
+      "sha256": "007b3f0b3b80c786f13b38fc626ba9a6ab43b9b05ad1ed76569e8f241920332f",
+      "bytes": 1057,
+      "vintage_status": "Current public download; not the authors' original data vintage"
+    },
+    "sp500_yahoo_2026h1_monthly.json": {
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC?period1=1767225600&period2=1782864000&interval=1mo",
+      "series_id": "^GSPC",
+      "used_months": "2026-01 through 2026-06",
+      "downloaded_utc": "2026-10-14T02:42:08.492471+00:00",
+      "sha256": "17271e3332690d8f79fbd7616ab468d46c571874ebf41e4e72fb59a31b6e148a",
+      "bytes": 1814,
+      "vintage_status": "Current public download; not the authors' original data vintage"
+    }
+  },
+  "limitations": [
+    "Licensed Datastream input and original note454 vintage are unavailable; public Yahoo S&P 500 quarter-end price quotes are a documented adaptation.",
+    "Existing BEA workbooks were published August 26, 2026, and Z.1 archive released September 11, 2026; public DFA/BLS/market downloads use their current revisions.",
+    "DFA distributions are official quarterly estimates interpolated/extrapolated between SCF survey waves; income bins are not fixed cohorts.",
+    "BEA personal-sector consumption/income, household DFA wealth, and HH+NP loans have different source boundaries.",
+    "October2025 unemployment was not reported because of the lapse in appropriations;2025Q4 averages the two observed November/December rates. The raw missing value, monthly count and partial-quarter flag are retained; no interpolation.",
+    "The 2026 extension appends observed quarters to the existing revised public-data adaptation; it is not an original June2026-author forecast or exact historical-vintage replication.",
+    "2026Q1/Q2 unemployment each uses three actual monthly observations; the frozen October2025 gap and 2025Q4 two-month average remain unchanged."
+  ],
+  "bootstrap": {
+    "draws_per_model": 399,
+    "block_length_quarters": 4,
+    "seeds": {
+      "log_ecm": 454,
+      "ratio_ecm": 2454
+    },
+    "status": "Estimated joint two-stage parameter draws; conditional on observed predictor paths; both stages originally refitted",
+    "unstable_completed_log_draws_retained": 2
+  },
+  "distribution_status": "Derived factual macroeconomic inputs and model estimates; upstream provider/publisher originals are not redistributed; source rights remain with their holders"
+}

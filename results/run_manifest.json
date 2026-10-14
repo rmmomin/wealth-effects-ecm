@@ -1,0 +1,72 @@
+{
+  "created_utc": "2026-10-14T16:32:04.843326+00:00",
+  "configuration": {
+    "data": {
+      "panel": "data/quarterly_panel.csv",
+      "gdp": "data/gdp_accounting.csv",
+      "bootstrap": "data/bootstrap_parameters.csv"
+    },
+    "model": {
+      "start": "1990Q1",
+      "end": "2019Q4",
+      "short_lags": 1,
+      "consumption_lags": 1,
+      "hac_lags": 4,
+      "coint_maxlag": 4,
+      "coint_autolag": "aic"
+    },
+    "decomposition_start": "1990Q1",
+    "data_end": "2026Q2",
+    "display_start": "2023Q1",
+    "bootstrap": {
+      "draws": 399,
+      "block_length": 4,
+      "seeds": {
+        "log_ecm": 454,
+        "ratio_ecm": 2454
+      }
+    },
+    "confidence_level": 0.95
+  },
+  "input_sha256": {
+    "data/quarterly_panel.csv": "b860ec9751636124ca3cb84d7d6bc2f2118467154e94d99900a1a5b7ecf70bf4",
+    "data/gdp_accounting.csv": "4abfefe44d2c0d820aeba79e95f62a103856f87cb63fab2ff5cfb99a0a95c449",
+    "data/bootstrap_parameters.csv": "f5125ff5fc7959a11dc86d4f652f14dc4a96fe4b5c70e9abbca02dba21c878de"
+  },
+  "configuration_sha256": {
+    "config/ecm.json": "8fc6bbd715b57d08d9a6cb1699401f6330c3a94f00b18cde8e75e0c517633dde"
+  },
+  "source_sha256": {
+    "scripts/run_ecm.py": "8c9b0a20117efeefd2643a9c524af7bac039f78fb062d8973c157e305f3a5023",
+    "wealth_effects/ecm_publication.py": "87c28f9cccc7b72af8d54940bc5cff15496a7d896c3a20e348e133a6272e06ad",
+    "wealth_effects/ecm_gdp.py": "c88242143eb892c0957961b4a9557d78263a28b7f6e97e2f4d18ceb6f0809ed7",
+    "wealth_effects/note454_ecm.py": "0345a462961241f3c5da1d9290437d7eb0166a44fe2b4a0aea3851f401fb6463",
+    "wealth_effects/note454_ratio.py": "2075ab679acdfe9341c72140e99e02b7abdf7bf5e677e90dcc2065468a46b510",
+    "wealth_effects/note454_ratio_ecm.py": "eea9d021728b83a3c708e8d910359930e6166bc8c0838d775bc731809177fb1d",
+    "wealth_effects/note454_gdp_draws.py": "f7f2961ccc156f765e202b724f852385912d82d0e0f72e5e82a9ce0acfd640ce"
+  },
+  "dependencies": {
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scipy": "1.18.1",
+    "statsmodels": "0.14.6",
+    "matplotlib": "3.11.2"
+  },
+  "bootstrap_rebuilt": false,
+  "output_sha256": {
+    "RESULTS.md": "20fc4c5be6bcb3e3c06658530c81b0cc763f16ca17487a4de6201de28ee6d48e",
+    "annual_consumption_contributions.csv": "818101c048da11139f56572487896f3508315dac7ca85273b8541d2a4c924b25",
+    "annual_gdp_wealth.pdf": "4a082db949ec11dc5b2e10604cf25146c38deb51edeef19d37cff1caf412d808",
+    "annual_gdp_wealth.png": "047dc4d9ab7d860f6750932de3ea3d086001bf7af3e885c991812562df916f48",
+    "channel_gdp_growth.csv": "fc95681c1b4c29a17eb84444d97a6e36c0d35cc7b8963b0ec1ea842a06f99ab6",
+    "coefficients.csv": "5dd4c99cb50f6aaf5735db39ba3939c67c4e03587a937cb0721c8c7af325b607",
+    "consumption_decomposition.pdf": "102c8c65e7bcfc78928c10fe47b3ac53cf7c720a6b609fe87c5ab1e326b07623",
+    "consumption_decomposition.png": "7d02ab8d33ea3b31c2c6b6a4ebaac04d1053f2fa1f26c05641572d7fe476a8c4",
+    "diagnostics.json": "da9c0c31e6fa3412a4741263c95aa44a7f41283a6e060bf405ff162d289487ae",
+    "period_summary.csv": "d45e546102f20c4b22cbb5c40cfff5618500d99290bda8d4c4c7c0cfb98f46db",
+    "quarterly_consumption_contributions.csv": "3d145f12989b0079c9e029f0aab4d14cd06f41e9c988cb2b15e522e3b2eae197",
+    "quarterly_gdp_growth.csv": "5fc51795bf9c18cc05e2c2bf87bcdf50db9491d966315f11447fb53343065853",
+    "quarterly_gdp_wealth.pdf": "02eea9aa629240f496588d26b8f7d2d429470b50ed096d919a5f23899db29796",
+    "quarterly_gdp_wealth.png": "3a88785c91c3b3061001a176b6e645f1e23cb20fc6fc112b56609a40ddf47abc"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "data": {
+    "panel": "data/quarterly_panel.csv",
+    "gdp": "data/gdp_accounting.csv",
+    "bootstrap": "data/bootstrap_parameters.csv"
+  },
+  "model": {
+    "start": "1990Q1",
+    "end": "2019Q4",
+    "short_lags": 1,
+    "consumption_lags": 1,
+    "hac_lags": 4,
+    "coint_maxlag": 4,
+    "coint_autolag": "aic"
+  },
+  "decomposition_start": "1990Q1",
+  "data_end": "2026Q2",
+  "display_start": "2023Q1",
+  "bootstrap": {
+    "draws": 399,
+    "block_length": 4,
+    "seeds": {
+      "log_ecm": 454,
+      "ratio_ecm": 2454
+    }
+  },
+  "confidence_level": 0.95
+}

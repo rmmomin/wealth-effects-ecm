@@ -1,0 +1,144 @@
+{
+  "models": {
+    "ratio_ecm": {
+      "sample_start": "1990Q1",
+      "sample_end": "2019Q4",
+      "observations": 120,
+      "short_run_parameters": 13,
+      "short_run_df_resid": 107,
+      "short_run_condition_number": 6.929589725564751,
+      "short_run_r_squared": 0.5480136351662221,
+      "short_run_rmse_log_growth": 0.003280430084118244,
+      "adjustment_coefficient": -0.06745604726137663,
+      "level_recursion_spectral_radius": 0.9315332740104978,
+      "stable_level_recursion": true,
+      "breusch_godfrey_4lag_pvalue": 0.00596445181805637,
+      "ratio_long_run": {
+        "model": "ratio_dols",
+        "requested_training_start": "1990Q1",
+        "requested_training_end": "2019Q4",
+        "effective_sample_start": "1990Q3",
+        "effective_sample_end": "2019Q3",
+        "observations": 117,
+        "requested_training_observations": 120,
+        "removed_boundary_quarters": [
+          "1990Q1",
+          "1990Q2",
+          "2019Q4"
+        ],
+        "parameters": 9,
+        "degrees_of_freedom": 108,
+        "leads_lags": 1,
+        "hac_lags": 4,
+        "standardized_condition_number": 379.73718430809623,
+        "r_squared": 0.6251330626527769,
+        "residual_ratio_rmse": 0.011497279242937078,
+        "flow_units": "C, Y and transfers: actual quarterly real flows multiplied by four to form annualized flow levels",
+        "stock_units": "Real W80/W20 stocks are not annualized",
+        "transfer_mpc": 1.0,
+        "transfer_mpc_status": "Maintained assumption, not an estimated restriction tested here",
+        "training_isolation": "Ratios, differences and all leads/lags constructed inside the stated training window; no holdout leads",
+        "inference": "Unrestricted statsmodels OLS; Bartlett HAC n/(n-k) correction and pointwise t intervals",
+        "replication_status": "Auxiliary adaptation motivated by Beach/Gamber/Moran; not the undisclosed Banque de France equation",
+        "identification": "Conditional level relation; no causal identification or cointegration validation established by this fit",
+        "source_group_definition": "Canonical W80/W20 income-group wealth; see input provenance"
+      },
+      "functional_form_status": "Auxiliary Beach-compatible ratio/DOLS target, not an authors' Banque de France ECM equation",
+      "transfer_assumption": "Long-run MPC out of transfers fixed at one by the referenced ratio normalization",
+      "wealth_coefficient_units": "Annual consumption dollars per wealth-stock dollar; wealth is not annualized",
+      "target_error_definition": "log observed quarterly C minus log positive ratio-predicted annual C/4",
+      "cointegration_test_status": "No ordinary residual ADF/MacKinnon Engle-Granger test claimed for this nonlinear DOLS target",
+      "short_run_inference": "Pointwise HAC conditional on fitted ratio/DOLS target; full two-stage bootstrap reported separately",
+      "identification": "Conditional functional-form sensitivity, not causal wealth effects",
+      "bootstrap": {
+        "method": "Restore saved joint vectors, with both stages originally refitted",
+        "requested_draws": 399,
+        "block_length_quarters": 4,
+        "seed": 2454,
+        "failures": [],
+        "inference_status": "Exploratory conditional percentile intervals; unresolved ECM diagnostics, fixed predictor paths and model form"
+      },
+      "saved_draws_recovered": 399,
+      "nonnegative_adjustment_draws_retained": 0,
+      "maximum_consumption_reconciliation_error": 4.172009959724221e-16,
+      "maximum_pce_gdp_reconciliation_error_pp": 1.1235457009206584e-13
+    },
+    "log_ecm": {
+      "sample_start": "1990Q1",
+      "sample_end": "2019Q4",
+      "observations": 120,
+      "long_run_parameters": 4,
+      "short_run_parameters": 13,
+      "short_run_df_resid": 107,
+      "long_run_condition_number": 5939.418246981192,
+      "short_run_condition_number": 6.8735330598745925,
+      "short_run_r_squared": 0.5430735759751251,
+      "short_run_rmse_log_growth": 0.0032983083655987178,
+      "adjustment_coefficient": -0.06278227114172384,
+      "level_recursion_spectral_radius": 0.9357935906088762,
+      "stable_level_recursion": true,
+      "functional_form_status": "Declared log-form adaptation; Banque de France equations/normalization/lags not disclosed",
+      "short_run_inference": "Bartlett HAC with n/(n-k) correction and t critical values; conditional on generated ECT",
+      "long_run_inference": "Point estimates; full two-stage conditional residual bootstrap reported separately",
+      "identification": "Conditional macro association; no causal instrument or imposed coefficient sign",
+      "engle_granger": {
+        "statistic": -1.9447085596973561,
+        "pvalue": 0.8829561499681771,
+        "critical_values": {
+          "1pct": -4.798128339806511,
+          "5pct": -4.191200063554834,
+          "10pct": -3.8810223924864062
+        },
+        "reject_no_cointegration_5pct": false,
+        "method": "statsmodels augmented Engle-Granger; MacKinnon cointegration critical values, not ordinary residual ADF p-values",
+        "maintained_assumption": "The four log-level series are I(1); test interpretation also requires appropriate deterministic terms"
+      },
+      "breusch_godfrey_4lag_pvalue": 0.007852841126373949,
+      "unit_root_diagnostics": {
+        "logC": {
+          "level_adf_pvalue": 0.11809614139171037,
+          "difference_adf_pvalue": 0.002916900867051043
+        },
+        "logY": {
+          "level_adf_pvalue": 0.7865013840817865,
+          "difference_adf_pvalue": 9.197026870777093e-11
+        },
+        "logW80": {
+          "level_adf_pvalue": 0.7022878311891979,
+          "difference_adf_pvalue": 0.0450883761095227
+        },
+        "logW20": {
+          "level_adf_pvalue": 0.8396887329583674,
+          "difference_adf_pvalue": 0.00021820985430705454
+        }
+      },
+      "cointegration_warning": "No rejection of no cointegration; error-correction interpretation remains unvalidated",
+      "bootstrap": {
+        "method": "Restore saved joint vectors, with both stages originally refitted",
+        "requested_draws": 399,
+        "block_length_quarters": 4,
+        "seed": 454,
+        "failures": [],
+        "inference_status": "Exploratory conditional percentile intervals; unresolved ECM diagnostics, fixed predictor paths and model form"
+      },
+      "saved_draws_recovered": 399,
+      "nonnegative_adjustment_draws_retained": 2,
+      "maximum_consumption_reconciliation_error": 4.677248172102466e-16,
+      "maximum_pce_gdp_reconciliation_error_pp": 1.283417816466681e-13
+    }
+  },
+  "observed_data_end": "2026Q2",
+  "api_calls": 0,
+  "estimation_window": {
+    "start": "1990Q1",
+    "end": "2019Q4",
+    "short_lags": 1,
+    "consumption_lags": 1,
+    "hac_lags": 4,
+    "coint_maxlag": 4,
+    "coint_autolag": "aic"
+  },
+  "gdp_vintage": "Frozen BEA workbook published August 26, 2026; not the latest GDP revision",
+  "replication_status": "Actual-data methodology adaptation; exact Banque de France specification and numerical replication unverified",
+  "uncertainty": "Pointwise conditional residual percentile intervals; neither causal identification nor general-equilibrium uncertainty included"
+}
