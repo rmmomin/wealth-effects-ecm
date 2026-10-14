@@ -17,6 +17,7 @@
 !/data/gdp_accounting.csv
 !/data/bootstrap_parameters.csv
 !/data/sources.json
+!/data/wealth_effects_inputs.xlsx
 !/docs/
 /docs/*
 !/docs/ECM_METHODOLOGY.md

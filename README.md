@@ -82,6 +82,7 @@ The exact frozen inputs used by the runner are committed in the data folder:
 
 | File | Contents |
 | --- | --- |
+| [Excel workbook](data/wealth_effects_inputs.xlsx) | Spreadsheet copy of the model data, GDP inputs and bootstrap estimates, with source and unit documentation |
 | [quarterly_panel.csv](data/quarterly_panel.csv) | 148 quarters, 1989Q3–2026Q2: consumption, income, transfers, wealth, credit, unemployment, S&P prices and model transforms |
 | [gdp_accounting.csv](data/gdp_accounting.csv) | The same quarterly horizon: nominal and real GDP at annual rates, plus BEA's published PCE growth contribution |
 | [bootstrap_parameters.csv](data/bootstrap_parameters.csv) | Our estimated joint coefficient draws, 399 per model, for reproducing uncertainty |
@@ -89,8 +90,9 @@ The exact frozen inputs used by the runner are committed in the data folder:
 
 These files are sufficient to estimate both models and reproduce the results
 offline, without API credentials, new downloads or the original private
-research checkout. The bootstrap file contains model estimates rather than
-additional observational data. Provider raw archives and papers are linked
+research checkout. The Python runner reads the CSVs; the Excel workbook is
+a companion data snapshot for inspection. The bootstrap file contains model
+estimates rather than additional observational data. Provider raw archives and papers are linked
 through [the data documentation](docs/DATA_SOURCES.md); the release includes
 the derived numerical inputs used in the calculation. Source rights remain
 with the providers as described in [NOTICE.md](NOTICE.md).

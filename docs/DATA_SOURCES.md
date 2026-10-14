@@ -90,6 +90,13 @@ series. `gdp_accounting.csv` contains the quarterly accounting inputs.
 conditional uncertainty. These files allow an offline calculation; raw
 provider bytes are excluded from the public Git history.
 
+[wealth_effects_inputs.xlsx](../data/wealth_effects_inputs.xlsx) provides an
+Excel copy of those numerical inputs and parameter draws, with variable,
+unit and source documentation. It retains all observations and missing-data
+positions from the CSVs, including the S&P 500 levels and quarterly log
+changes. The Python calculation reads the CSV files; the workbook is a
+companion snapshot rather than an Excel implementation of the estimator.
+
 Source attribution does not relicense provider content, trademarks, index
 data or published papers. Consult the linked providers for their applicable
 terms. The public numerical series and model outputs are research inputs and
