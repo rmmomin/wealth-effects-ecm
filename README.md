@@ -109,7 +109,7 @@ The original public-data ECM remains reproducible without this additional input.
 .venv/bin/python scripts/run_ai_ecm_split.py
 ```
 
-[Stacked GDP growth, three-part wealth columns and the wealth share of growth](results/ai_split/columns/README.md)
+[Stacked GDP growth and three-part wealth column charts](results/ai_split/columns/README.md)
 can be reproduced from the public saved outputs, without the excluded market-cap inputs:
 
 ```bash

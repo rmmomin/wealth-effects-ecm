@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-10-15T14:30:28.029091+00:00",
+  "created_utc": "2026-10-15T14:34:59.411288+00:00",
   "model": "ratio_ecm",
   "display_start": "2023Q1",
   "display_end": "2026Q2",
@@ -12,22 +12,18 @@
     "config/ai_split.json": "10e002374dea9139e49c08ea5fb28297bc4d762b6b277bd312653a8b525639f0"
   },
   "source_sha256": {
-    "wealth_effects/ecm_column_charts.py": "617afcf7db8098ff35c2d17597e102da2d142034585ef740e1ebf8844682210f",
-    "scripts/plot_ecm_columns.py": "20f6ffe7057951ca56b1d36450e7f9878c65191ac9b699adee6ccc51b1fb4469"
+    "wealth_effects/ecm_column_charts.py": "ed6a0b1db8d912f61afb9e16733604df5925d05ac8e853b6b7340668e2c1c65f",
+    "scripts/plot_ecm_columns.py": "3cd9aa54ed1fc7113bd1440ec0e48b6246d781c9209e5006b9f0dc6e84b93ee5"
   },
   "private_capitalization_inputs_read": false,
   "new_estimation_calls": 0,
   "api_calls": 0,
-  "wealth_growth_share_formula": "100 * wealth_gdp_contribution_pp / observed_real_gdp_growth_saar_pct",
-  "zero_growth_tolerance_pct": 1e-10,
   "output_sha256": {
-    "README.md": "62ea30cac79ec3c4c37c7ad719072e11db0769009ea1362ba385e24e0d43be21",
-    "column_chart_data.csv": "e697276371ee5371299e9b3661473cb57a225b1540aefdcf1c13fee45dc877b7",
+    "README.md": "8da0bd52dede69a47633ee4eab7d2786d6d1c997db1fd46a130849b4253ac08e",
+    "column_chart_data.csv": "bf509aca6cd6385b82d01971ae9e6933d0c8c53d7bc330a127bd241f2e2f46ed",
     "gdp_with_without_wealth.pdf": "33976317d82a6a66343113fa4e2777726f1400e0022074bd6e835018ef6539ac",
     "gdp_with_without_wealth.png": "e7536543dbbe00d97ec411f89ed34293272b0e5da702331fe8fc9da38dad6c9f",
     "wealth_ai_non_ai_other.pdf": "cd18c571077a8cca2417d299304705a7a4f0554885c27ae6622a08b839c1f3eb",
-    "wealth_ai_non_ai_other.png": "064db2bf064b8014a4b36d154a9f8486be88a47501405b21f008a7af5fc27ffb",
-    "wealth_share_of_gdp_growth.pdf": "cba13d22e140ab8b87c72e59d9398c39ac92afad0af4111c7650854e1a9275a3",
-    "wealth_share_of_gdp_growth.png": "a196e9fc68c6c920417d97740d5bd4aeffa71aa7caea678486fcfeb3c3319479"
+    "wealth_ai_non_ai_other.png": "064db2bf064b8014a4b36d154a9f8486be88a47501405b21f008a7af5fc27ffb"
   }
 }

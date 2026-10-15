@@ -1,4 +1,4 @@
-"""GDP decomposition and wealth-share charts from public saved ECM outputs."""
+"""Stacked GDP and wealth decomposition charts from public saved ECM outputs."""
 from datetime import datetime, timezone
 import hashlib
 import json
@@ -9,24 +9,6 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 LABELS = {'ratio_ecm': 'Ratio/DOLS ECM', 'log_ecm': 'Log ECM'}
-GDP_GROWTH_ZERO_TOLERANCE_PCT = 1e-10
-
-
-def wealth_growth_share(wealth_pp, observed_growth_pct):
-    """Signed share of observed growth; undefined at effectively zero growth.
-
-    Inputs share the same quarterly annualization. A positive wealth allocation
-    divided by negative GDP growth is negative: wealth cushions contraction.
-    Shares above100% mean the arithmetic nonwealth contribution is negative.
-    """
-    wealth, growth = np.broadcast_arrays(np.asarray(wealth_pp, dtype=float),
-                                        np.asarray(observed_growth_pct, dtype=float))
-    if not np.isfinite(wealth).all() or not np.isfinite(growth).all():
-        raise ValueError('Finite GDP growth and wealth contributions required')
-    share = np.full(wealth.shape, np.nan)
-    np.divide(100 * wealth, growth, out=share,
-              where=np.abs(growth) > GDP_GROWTH_ZERO_TOLERANCE_PCT)
-    return share
 
 
 def prepare_column_data(quarterly, accounting, model='ratio_ecm', split_start='2022Q1',
@@ -82,10 +64,6 @@ def prepare_column_data(quarterly, accounting, model='ratio_ecm', split_start='2
     data['observed_real_gdp_growth_saar_pct'] = observed
     data['wealth_gdp_contribution_pp'] = amounts.original_wealth
     data['gdp_growth_less_wealth_saar_pct'] = observed - amounts.original_wealth
-    data['wealth_share_of_gdp_growth_pct'] = wealth_growth_share(amounts.original_wealth, observed)
-    data['wealth_share_status'] = np.select(
-        [observed.abs() <= GDP_GROWTH_ZERO_TOLERANCE_PCT, observed < 0],
-        ['undefined_zero_growth', 'negative_gdp_growth'], default='positive_gdp_growth')
     data['ai_sp_contribution_pp'] = amounts.ai_sp
     data['non_ai_sp_contribution_pp'] = amounts.non_ai_sp
     data['other_wealth_contribution_pp'] = amounts.index_cap_basis + amounts.unallocated_wealth
@@ -103,7 +81,7 @@ def _hash(path):
 
 def build_column_charts(output_dir=ROOT / 'results/ai_split/columns',
                         config_path=ROOT / 'config/ai_split.json'):
-    """Regenerate stacked columns and the growth-share line from public outputs."""
+    """Regenerate both stacked column charts using public saved outputs."""
     config_path, output = Path(config_path).resolve(), Path(output_dir).resolve()
     config = json.loads(config_path.read_text())
     source = ROOT / 'results/ai_split/quarterly_wealth_split.csv'
@@ -127,15 +105,13 @@ No model is refitted. The national-accounts data retain the original August26,20
 1. **Stacked real GDP growth.** Columns stack the arithmetic GDP contribution excluding wealth with the estimated wealth contribution. Diamonds show observed quarter-over-quarter annualized GDP growth. Opposite signs use diverging stacks, so the diamond, rather than the top positive segment, identifies net growth. This is an accounting decomposition, not an identified causal or general-equilibrium counterfactual.
 2. **Wealth contribution: AI, non-AI and other.** AI-linked S&P, the remaining S&P and other wealth sum to the original total wealth contribution. Other combines the index/capitalization basis with unallocated wealth, including non-S&P assets/liabilities, inherited effects and mapping residuals. It is not a housing estimate. Signed stacks retain negative components; diamonds show the net total.
 
-3. **Wealth contribution as a percentage of observed growth.** The line is `100 × wealth contribution (pp) / observed GDP growth (%)`. The denominator retains its sign. A positive wealth contribution during a GDP contraction produces a negative ratio because wealth cushions the contraction. Shares above100% reflect a negative contribution from the rest of GDP. No ratios are clipped or absolute-valued. At effectively zero GDP growth (absolute annualized growth at most1e-10%), the ratio is undefined and exported blank; line connections are broken around negative-growth quarters. This ratio is not an identified causal fraction and becomes sensitive near zero GDP growth.
-
 The CSV contains derived model results and public GDP growth only. The excluded AI/non-AI capitalization observations and detailed gain ledger are not read or exported.
 
 ```bash
 python scripts/plot_ecm_columns.py
 ```
 
-[Stacked GDP decomposition](gdp_with_without_wealth.png), [three-part wealth decomposition](wealth_ai_non_ai_other.png), [percentage of GDP growth](wealth_share_of_gdp_growth.png), [chart values](column_chart_data.csv). PDF versions are provided for presentations.
+[Stacked GDP decomposition](gdp_with_without_wealth.png), [three-part wealth decomposition](wealth_ai_non_ai_other.png), [chart values](column_chart_data.csv). PDF versions are provided for presentations.
 ''')
     for name, digest in source_hashes.items():
         if _hash(ROOT / name) != digest:
@@ -148,8 +124,6 @@ python scripts/plot_ecm_columns.py
         'source_sha256': {str(Path(__file__).resolve().relative_to(ROOT)): _hash(__file__),
             'scripts/plot_ecm_columns.py': _hash(ROOT / 'scripts/plot_ecm_columns.py')},
         'private_capitalization_inputs_read': False, 'new_estimation_calls': 0, 'api_calls': 0,
-        'wealth_growth_share_formula': '100 * wealth_gdp_contribution_pp / observed_real_gdp_growth_saar_pct',
-        'zero_growth_tolerance_pct': GDP_GROWTH_ZERO_TOLERANCE_PCT,
         'output_sha256': {p.name: _hash(p) for p in sorted(output.iterdir()) if p.is_file() and p.name != 'run_manifest.json'}}
     (output / 'run_manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')
     return {'output': str(output), 'quarters': len(data), 'private_inputs_read': False,
@@ -227,36 +201,3 @@ def _render(data, output):
     fig.text(.5, .014, 'Other includes the index/capitalization basis, non-S&P wealth, inherited effects and mapping residuals.\n'
         'Ownership-bridge baseline: '+baseline+'. Conditional gross consumption-channel allocations; not causal GDP effects.', ha='center', fontsize=8)
     fig.tight_layout(rect=(0,.1,1,1)); save(fig, 'wealth_ai_non_ai_other')
-
-
-    fig, ax = plt.subplots(figsize=(11.5, 6.2))
-    growth = data.observed_real_gdp_growth_saar_pct.to_numpy()
-    share = data.wealth_share_of_gdp_growth_pct.to_numpy()
-    defined = np.isfinite(share)
-    # Keep all defined observations; do not draw through a denominator sign change.
-    for j in range(1,len(data)):
-        if defined[j-1] and defined[j] and growth[j-1] * growth[j] > 0:
-            ax.plot(x[j-1:j+1], share[j-1:j+1], color='#246c9d', lw=2)
-    positive_growth = defined & (growth > 0)
-    negative_growth = defined & (growth < 0)
-    ax.scatter(x[positive_growth], share[positive_growth], s=30, color='#246c9d', zorder=4,
-               label='Wealth contribution / observed GDP growth')
-    ax.scatter(x[negative_growth], share[negative_growth], s=42, marker='D', color='#b4534c', zorder=4,
-               label='GDP contraction: signed ratio')
-    for j in np.flatnonzero(defined):
-        offset = (0,-16) if growth[j] < 0 else (0,9)
-        ax.annotate(f'{share[j]:.1f}%', (j,share[j]), xytext=offset, textcoords='offset points',
-                    ha='center', fontsize=8, color='#b4534c' if growth[j] < 0 else '#234f75')
-    style(ax, 'Wealth contribution / observed GDP growth (%)')
-    ax.axhline(100, color='#7b8794', lw=.9, ls='--', zorder=0)
-    ax.text(len(data)-.5, 102, '100%', ha='right', va='bottom', color='#6b7682', fontsize=8)
-    values = np.r_[share[defined], 0., 100.]
-    span = max(values.max()-values.min(),1.)
-    ax.set_ylim(values.min()-.17*span, values.max()+.25*span)
-    ax.legend(frameon=False, fontsize=9, loc='upper left')
-    ax.set_title('Wealth contribution as a percentage of observed real GDP growth\n'+model+' | '+data.quarter.iloc[0]+'–'+data.quarter.iloc[-1],
-        loc='left', fontsize=14, pad=15)
-    fig.text(.5, .014, 'Share = 100 × wealth contribution (pp) / observed GDP growth (%). Ratios can exceed 100% when other contributions offset wealth.\n'
-        'Negative ratio during contraction means wealth cushions the decline. Line breaks around contractions; zero-growth ratios are undefined.',
-        ha='center', fontsize=8)
-    fig.tight_layout(rect=(0,.1,1,1)); save(fig, 'wealth_share_of_gdp_growth')

@@ -355,12 +355,6 @@ including when components have opposite signs. This subtraction is an accounting
 adjustment, not a causal counterfactual. The second combines `index_cap_basis`
 and `unallocated_wealth` into **other**, so AI-linked S&P, non-AI-linked S&P and
 other sum to the original wealth contribution. Other is not housing alone.
-A third chart shows `100 × wealth contribution (pp) / observed GDP growth (%)`.
-It preserves the signed denominator: a positive wealth contribution during
-contraction gives a negative ratio because it cushions the decline. Ratios
-above100% mean the rest of GDP makes a negative net contribution. Ratios are
-undefined when absolute annualized GDP growth is at most1e-10%, and line
-connections are broken around negative-growth quarters; no values are clipped.
 
 ## Reproduce and inspect
 
