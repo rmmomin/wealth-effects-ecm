@@ -101,3 +101,24 @@ Source attribution does not relicense provider content, trademarks, index
 data or published papers. Consult the linked providers for their applicable
 terms. The public numerical series and model outputs are research inputs and
 results; no right to upstream source material is granted by this repository.
+
+## Optional S&P AI/other split
+
+The original public-data statement above applies to the baseline ECM. The
+optional AI/S&P extension additionally requires a locally provided
+`data/spx_ai_split_inputs.csv`, a frozen 2021Q4–2026Q2 aggregate subset from
+the existing AI wealth study. **The AI/non-AI capitalization observations
+and detailed capitalization/ownership ledger are excluded from the published
+repository and ignored by Git.** The local input combines
+user-supplied S&P-specific AI and total market capitalization with cached
+Financial Accounts ownership and DFA income-group equity shares. The S&P
+total is divided by 1,000 (user-confirmed) to express all caps in USD billions;
+other S&P is the residual. Contemporaneous ownership observations are stored
+and shifted once in the calculation. The vendor and constituents underlying
+the user-supplied market-cap series are unverified. The original workbook is
+not published; [source metadata and transformations](../data/spx_ai_split_sources.json)
+remain available. The [AI methodology](AI_ECM_SPLIT.md) documents the required
+input schema and units. Charts, model contribution tables and conditional
+intervals are included as derived research outputs. The extension makes no
+new downloads and uses no private household microdata, but it cannot be rerun
+from the published repository without the local capitalization input.

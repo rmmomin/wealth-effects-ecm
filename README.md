@@ -66,9 +66,57 @@ parameter vectors:
 See [reproduction details](docs/REPRODUCIBILITY.md) for units, horizon,
 configuration and verification.
 
+## AI-linked and other S&P: separate 2022-onward version
+
+The [AI/S&P extension](docs/AI_ECM_SPLIT.md) subdivides the existing wealth
+channel using the S&P-specific AI-linked market capitalization from the AI
+wealth study and **other S&P = total S&P minus AI-linked S&P**. It reuses the
+same estimated coefficients and 399 saved joint bootstrap vectors per model;
+no equation is refitted. Original ECM results and nonwealth channels are
+preserved.
+
+Charts focus on the **ratio/DOLS ECM from 2023Q1 onward**. This display cutoff
+does not change the primary 2021Q4 split baseline or any estimated contribution.
+
+![AI-linked and other S&P wealth allocation](results/ai_split/wealth_split.png)
+
+With a 2021Q4 split baseline and the documented household-ownership bridge,
+2026 H1 **mean quarterly annualized real GDP contributions**, in percentage
+points, are:
+
+| Specification | AI-linked S&P | Other S&P | Index/cap basis | Remaining wealth / inherited | Original total wealth |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Ratio/DOLS ECM | 0.112 | 0.043 | -0.010 | 0.370 | 0.515 |
+| Log ECM | 0.010 | -0.004 | -0.011 | 0.194 | 0.188 |
+
+These are conditional subdivisions of the gross consumption allocation,
+not separately estimated causal AI effects. The AI component's exploratory
+95% interval is **[-0.012, 0.244]** for the ratio ECM and **[-0.108, 0.102]**
+for the log ECM. Results depend on the ownership bridge and functional form.
+A version that partitions only the short-run S&P control and a 2023Q1-start
+sensitivity are included. Remaining wealth includes other assets, inherited
+effects and mapping residuals; it is not housing alone.
+
+The AI/non-AI **market-cap observations and detailed ownership/gain ledger are
+excluded from the public repository** and kept locally. The [source metadata](data/spx_ai_split_sources.json)
+and [input schema](docs/AI_ECM_SPLIT.md#inputs-provenance-and-units) are included.
+To reproduce the optional AI extension, supply `data/spx_ai_split_inputs.csv`
+locally; it is ignored by Git. Its upstream vendor and constituent provenance
+have not been verified. Code, charts and derived ECM result tables are included.
+The original public-data ECM remains reproducible without this additional input.
+
+```bash
+.venv/bin/python scripts/run_ai_ecm_split.py
+```
+
+[Quarterly estimates](results/ai_split/quarterly_wealth_split.csv),
+[period summaries](results/ai_split/period_summary.csv),
+[results and limitations](results/ai_split/RESULTS.md), and
+[typeset methodology](docs/AI_ECM_SPLIT.md).
+
 ## Public data included
 
-All observational inputs used by this ECM adaptation come from publicly
+All observational inputs used by the **original ECM adaptation** come from publicly
 accessible sources: [BEA](https://www.bea.gov/products/national-income-and-product-accounts)
 consumption, income, transfers and GDP; Federal Reserve
 [Financial Accounts](https://www.federalreserve.gov/releases/z1/) credit and
@@ -318,9 +366,11 @@ period-level GDP accounting and inference details.
 config/ecm.json                 estimation and publication settings
 data/                           derived inputs and saved bootstrap parameters
 wealth_effects/                  reusable ECM and GDP-accounting modules
-scripts/run_ecm.py               portable research runner
+scripts/run_ecm.py               portable baseline research runner
+scripts/run_ai_ecm_split.py      frozen-coefficient AI/S&P subdivision
 tests/                          numerical and accounting validation
-results/                        tables, diagnostics and publication charts
+results/                        original ECM tables and publication charts
+results/ai_split/               separate AI/S&P decomposition and sensitivities
 docs/                           methodology, sources and reproduction guide
 ```
 

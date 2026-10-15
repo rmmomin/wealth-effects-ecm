@@ -1,0 +1,81 @@
+{
+  "created_utc": "2026-10-15T13:05:57.291814+00:00",
+  "configuration": {
+    "data": {
+      "panel": "data/quarterly_panel.csv",
+      "gdp": "data/gdp_accounting.csv",
+      "bootstrap": "data/bootstrap_parameters.csv",
+      "coefficients": "results/coefficients.csv",
+      "capitalization": "data/spx_ai_split_inputs.csv",
+      "provenance": "data/spx_ai_split_sources.json"
+    },
+    "ecm_config": "config/ecm.json",
+    "decomposition_start": "1990Q1",
+    "split_start": "2022Q1",
+    "sensitivity_split_start": "2023Q1",
+    "data_end": "2026Q2",
+    "variants": [
+      "ownership_bridge",
+      "price_control_only"
+    ],
+    "bootstrap_draws": 399,
+    "confidence_level": 0.95,
+    "ownership_timing": "lagged one quarter",
+    "market_cap_total_divisor": 1000,
+    "fit_new_parameters": false,
+    "display_start": "2023Q1",
+    "display_model": "ratio_ecm"
+  },
+  "input_sha256": {
+    "data/quarterly_panel.csv": "b860ec9751636124ca3cb84d7d6bc2f2118467154e94d99900a1a5b7ecf70bf4",
+    "data/gdp_accounting.csv": "4abfefe44d2c0d820aeba79e95f62a103856f87cb63fab2ff5cfb99a0a95c449",
+    "data/bootstrap_parameters.csv": "f5125ff5fc7959a11dc86d4f652f14dc4a96fe4b5c70e9abbca02dba21c878de",
+    "results/coefficients.csv": "5dd4c99cb50f6aaf5735db39ba3939c67c4e03587a937cb0721c8c7af325b607",
+    "data/spx_ai_split_inputs.csv": "bbca771deab0fa99982b34bf16aa89c575f6a3c578f6b4ef1a1bf64c4eb0d373",
+    "data/spx_ai_split_sources.json": "66a1b039d3129746724b942ee47d34689cba69583f47455e9e9865c616fcc5af"
+  },
+  "configuration_sha256": {
+    "config/ai_split.json": "10e002374dea9139e49c08ea5fb28297bc4d762b6b277bd312653a8b525639f0",
+    "config/ecm.json": "8fc6bbd715b57d08d9a6cb1699401f6330c3a94f00b18cde8e75e0c517633dde"
+  },
+  "source_sha256": {
+    "scripts/run_ai_ecm_split.py": "61620c6f95754ffaf36537e10dd55a734a1af98dbc14e67c254b36d8ac00b5fc",
+    "wealth_effects/ecm_ai_publication.py": "2d2609cd891bf02b67a98e0b1dd9708d08a4b1bc2fe53b1629a7bc929b7a2160",
+    "wealth_effects/ecm_ai_split.py": "be97eb19cc20b9fc8ea2918d537d1fb1778d69270389ce64eb00ca5c39d93730",
+    "wealth_effects/ecm_gdp.py": "c88242143eb892c0957961b4a9557d78263a28b7f6e97e2f4d18ceb6f0809ed7",
+    "wealth_effects/ecm_publication.py": "87c28f9cccc7b72af8d54940bc5cff15496a7d896c3a20e348e133a6272e06ad",
+    "wealth_effects/note454_ratio.py": "2075ab679acdfe9341c72140e99e02b7abdf7bf5e677e90dcc2065468a46b510",
+    "wealth_effects/note454_ecm.py": "0345a462961241f3c5da1d9290437d7eb0166a44fe2b4a0aea3851f401fb6463",
+    "wealth_effects/note454_ratio_ecm.py": "eea9d021728b83a3c708e8d910359930e6166bc8c0838d775bc731809177fb1d",
+    "wealth_effects/note454_gdp_draws.py": "f7f2961ccc156f765e202b724f852385912d82d0e0f72e5e82a9ce0acfd640ce"
+  },
+  "dependencies": {
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scipy": "1.18.1",
+    "statsmodels": "0.14.6",
+    "matplotlib": "3.11.2"
+  },
+  "new_estimation_calls": 0,
+  "output_sha256": {
+    "RESULTS.md": "d7ebb07471a29af05fa13bf4f8c56f3e6fe0a5a5c58d6d2684d2056adcf93679",
+    "ai_other_intervals.pdf": "2ae65f4af2980e3a250eba9befda0327945c92fdba11a7b51cbb785a059febc5",
+    "ai_other_intervals.png": "9550040346c9f565f10e5e64c2bf398de9ec24b060f1e67146d48fd01f372a91",
+    "diagnostics.json": "86b47d500082d4fca50ec48594b98680689ca0182f730d184171d44730fee979",
+    "mapping_sensitivity.pdf": "27fabf337bcd5470fc0de9a3814a9d3003778e42a5e704e4a38771ca7e8bc1d2",
+    "mapping_sensitivity.png": "f58fc268f3eca1282814ed42dc35e7ce95ce26194705c3d8e99e57216c286320",
+    "period_summary.csv": "06ebd6edc4cb65f2d2124decfd091438af8d902604e580a5cc3db9a8c02664c7",
+    "quarterly_all_channels.csv": "366de80572f6db1b57ee488e18b4e4673bc3268654b839f3359022a72fb04ef3",
+    "quarterly_wealth_split.csv": "28d07f0e8236b5c566af94876a6434dca895a167b195f5fda9dd23976cd86d3b",
+    "wealth_split.pdf": "ad5a3ea487364634276f5110c570d888faaf0c441bfafb03392a377585b759d8",
+    "wealth_split.png": "c50e5e6654ef536a7072df67cf2ccef21754c7b3a441403822c3cb7ccb05a954"
+  },
+  "presentation_updated_utc": "2026-10-15T13:12:47.847313+00:00",
+  "presentation_only_update": "Ratio/DOLS ECM charts displayed from2023Q1; the published derived ECM result tables are unchanged.",
+  "publication_updated_utc": "2026-10-15T13:16:15.378977+00:00",
+  "excluded_from_public_git": [
+    "data/spx_ai_split_inputs.csv",
+    "results/ai_split/capitalization_ownership_ledger.csv"
+  ],
+  "reproduction_status": "Baseline ECM is publicly reproducible. Historical AI/S&P calculations additionally require the locally supplied capitalization input; public tests use synthetic portfolios."
+}

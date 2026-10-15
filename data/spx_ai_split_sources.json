@@ -1,0 +1,76 @@
+{
+  "description": "Documentation for locally supplied quarterly S&P AI/other market-cap inputs. Observations and the detailed gain ledger are excluded from public Git; contemporaneous ownership weights are shifted once by the model.",
+  "coverage": {
+    "first": "2021Q4",
+    "last": "2026Q2",
+    "rows": 19,
+    "frequency": "quarter-end, from March/June/September/December monthly observations"
+  },
+  "market_cap": {
+    "source": "User-supplied ai_market_cap_data.xlsx from the existing AI wealth-effects calculation",
+    "workbook_sha256": "e03fec9d8f1042cbb143597f88aae9885aacbc3ed84088c52f96f3c71a2ba32c",
+    "sheet": "Sheet1",
+    "columns_used": [
+      "date",
+      "spx_ai_mkt_cap",
+      "spx_tot_mkt_cap"
+    ],
+    "ai_units": "USD billions",
+    "raw_total_units": "USD millions",
+    "raw_total_divisor": 1000,
+    "unit_confirmation": "User explicitly confirmed divide S&P total by 1,000 on October 15, 2026",
+    "non_ai_definition": "S&P total minus S&P-specific AI-linked market capitalization",
+    "input_freeze": "September 2026 existing AI-research snapshot; market-cap file contains observations through August, only complete quarters through June are used",
+    "public_provenance": "Market-cap workbook vendor, constituent classification, adjustment history and redistribution license are not established by the source manifest. Source observations, derived quarterly capitalization input and the detailed gain ledger are not included in the public repository.",
+    "valuation_limit": "Changes in capitalization may contain issuance, repurchases, index membership changes and classification changes as well as prices. No constituent decomposition is supplied."
+  },
+  "ownership": {
+    "source": "Federal Reserve Financial Accounts proxy already cached in the AI wealth study",
+    "url": "https://www.federalreserve.gov/releases/z1/",
+    "numerator": "LM153064475 household and nonprofit direct and indirect corporate equity holdings",
+    "denominator": "LM893064105 total corporate equity liability/market value proxy",
+    "timing": "Input rows are contemporaneous; the runner uses t-1 values",
+    "scope": "Broad household/nonprofit beneficial equity proxy includes indirect holdings and DC pensions once; numerator and denominator are not a measured household share of S&P capitalization. Private/foreign/sector-boundary mismatch makes application to S&P an assumption."
+  },
+  "income_group_shares": {
+    "source": "Federal Reserve Distributional Financial Accounts by income, frozen with the existing ECM inputs",
+    "url": "https://www.federalreserve.gov/releases/z1/dataviz/dfa/",
+    "series": "Corporate equities and mutual fund shares",
+    "raw_units": "USD millions, divided by 1000 before aggregation",
+    "bottom80_categories": [
+      "pct00to20",
+      "pct20to40",
+      "pct40to60",
+      "pct60to80"
+    ],
+    "top20_categories": [
+      "pct80to99",
+      "pct99to100"
+    ],
+    "ranking": "household income, not wealth",
+    "timing": "Input rows are contemporaneous; the runner uses t-1 values",
+    "assumption": "Same S&P AI/other mix within each income group. Group weights exclude unknown equity look-through inside pension entitlements and are a proxy for distributing aggregate beneficial ownership; full pension balances are not added as equities."
+  },
+  "deflator": "PCE price from data/quarterly_panel.csv; cumulative nominal allocated gains divided by current price, 2017=1",
+  "vintage_mismatch": "Original ECM GDP/PCE August 26, 2026 vintage retained; existing AI input snapshot is later. No silent vintage harmonization.",
+  "source_sha256": {
+    "market_cap_processed_csv": "9e3f317f6e84a9a69c359f75ec19978d738a2542fa2807bf632d42302ba5cdd1",
+    "ownership_processed_csv": "be22a29ec2f617d8d9c2c047dd533c93737d0d4bd046185421c0232bdf82f3dd",
+    "dfa_frozen_detail_csv": "89c57ff6b86dc62c04e9b3f921f9c4fd4d5975697a15b1a912dcc2068ccbcec1"
+  },
+  "derived_input_sha256": "bbca771deab0fa99982b34bf16aa89c575f6a3c578f6b4ef1a1bf64c4eb0d373",
+  "not_observed": [
+    "AI-specific household holdings by income",
+    "AI-specific consumption MPC",
+    "constituent-level pure revaluation changes",
+    "pension equity fractions by income"
+  ],
+  "publication_policy": {
+    "excluded_files": [
+      "data/spx_ai_split_inputs.csv",
+      "results/ai_split/capitalization_ownership_ledger.csv"
+    ],
+    "included": "Code, methodology, metadata, publication charts and derived ECM estimates",
+    "reproduction": "Supply the capitalization input locally using docs/AI_ECM_SPLIT.md; no source observations or substitute data are embedded in the public code."
+  }
+}

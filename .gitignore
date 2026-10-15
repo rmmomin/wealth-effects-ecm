@@ -70,3 +70,30 @@
 .env.*
 *.key
 *.pem
+
+# Frozen-coefficient AI/S&P extension, kept separate from baseline outputs.
+!/config/ai_split.json
+!/data/spx_ai_split_sources.json
+!/docs/AI_ECM_SPLIT.md
+!/scripts/run_ai_ecm_split.py
+!/wealth_effects/ecm_ai_split.py
+!/wealth_effects/ecm_ai_publication.py
+!/tests/test_ecm_ai_split.py
+!/results/ai_split/
+/results/ai_split/*
+!/results/ai_split/RESULTS.md
+!/results/ai_split/quarterly_wealth_split.csv
+!/results/ai_split/quarterly_all_channels.csv
+!/results/ai_split/period_summary.csv
+!/results/ai_split/diagnostics.json
+!/results/ai_split/run_manifest.json
+!/results/ai_split/wealth_split.png
+!/results/ai_split/wealth_split.pdf
+!/results/ai_split/ai_other_intervals.png
+!/results/ai_split/ai_other_intervals.pdf
+!/results/ai_split/mapping_sensitivity.png
+!/results/ai_split/mapping_sensitivity.pdf
+
+# Keep the user-supplied AI/non-AI source series and detailed gain ledger local.
+/data/spx_ai_split_inputs.csv
+/results/ai_split/capitalization_ownership_ledger.csv

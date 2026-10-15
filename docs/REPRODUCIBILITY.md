@@ -102,3 +102,29 @@ and unvalidated nonlinear ratio target remain documented in
 Updating inputs to a newer vintage constitutes a separate estimation
 exercise. The public workflow intentionally uses its supplied snapshot;
 preserve that snapshot and provenance before replacing any historical data.
+
+## Optional AI/S&P version
+
+The optional extension requires a locally provided AI/S&P input file. The
+published repository excludes `data/spx_ai_split_inputs.csv` and
+`results/ai_split/capitalization_ownership_ledger.csv`; both paths are ignored
+by Git. The original baseline command above remains self-contained.
+
+Place the local input at the path in `config/ai_split.json`, using the
+[documented schema and units](AI_ECM_SPLIT.md#inputs-provenance-and-units),
+then run:
+
+```bash
+.venv/bin/python scripts/run_ai_ecm_split.py --output results/ai_split
+```
+
+This separate runner reads `config/ai_split.json`, the frozen original point
+coefficients and joint bootstrap vectors, and `data/spx_ai_split_inputs.csv`.
+It never refits either ECM or overwrites the original result files. Once the
+local input is supplied, both bridge variants and both split baselines can
+be reproduced offline. The new market-cap inputs are a user-supplied
+aggregate series; their public provider provenance is not verified. The
+main published charts show the ratio/DOLS ECM from 2023Q1 onward without
+changing the 2021Q4 attribution baseline. The repository includes the model
+output tables and figures. The detailed gain/exposure ledger is generated
+only locally and stays ignored. See [AI methodology](AI_ECM_SPLIT.md).

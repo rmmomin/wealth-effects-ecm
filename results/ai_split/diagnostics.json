@@ -1,0 +1,88 @@
+{
+  "checks": [
+    {
+      "model": "ratio_ecm",
+      "variant": "ownership_bridge",
+      "split_start": "2022Q1",
+      "point_wealth_reconciliation_max_gdp_pp": 2.220446049250313e-16,
+      "other_channels_max_change_gdp_pp": 0.0,
+      "draw_wealth_reconciliation_max_log_growth": 1.734723475976807e-18,
+      "joint_draws_retained": 399
+    },
+    {
+      "model": "ratio_ecm",
+      "variant": "ownership_bridge",
+      "split_start": "2023Q1",
+      "point_wealth_reconciliation_max_gdp_pp": 1.1102230246251565e-16,
+      "other_channels_max_change_gdp_pp": 0.0,
+      "draw_wealth_reconciliation_max_log_growth": 4.336808689942018e-19,
+      "joint_draws_retained": 399
+    },
+    {
+      "model": "ratio_ecm",
+      "variant": "price_control_only",
+      "split_start": "2022Q1",
+      "point_wealth_reconciliation_max_gdp_pp": 1.1102230246251565e-16,
+      "other_channels_max_change_gdp_pp": 0.0,
+      "draw_wealth_reconciliation_max_log_growth": 1.734723475976807e-18,
+      "joint_draws_retained": 399
+    },
+    {
+      "model": "ratio_ecm",
+      "variant": "price_control_only",
+      "split_start": "2023Q1",
+      "point_wealth_reconciliation_max_gdp_pp": 2.220446049250313e-16,
+      "other_channels_max_change_gdp_pp": 0.0,
+      "draw_wealth_reconciliation_max_log_growth": 4.336808689942018e-19,
+      "joint_draws_retained": 399
+    },
+    {
+      "model": "log_ecm",
+      "variant": "ownership_bridge",
+      "split_start": "2022Q1",
+      "point_wealth_reconciliation_max_gdp_pp": 1.1102230246251565e-16,
+      "other_channels_max_change_gdp_pp": 0.0,
+      "draw_wealth_reconciliation_max_log_growth": 8.673617379884035e-19,
+      "joint_draws_retained": 399
+    },
+    {
+      "model": "log_ecm",
+      "variant": "ownership_bridge",
+      "split_start": "2023Q1",
+      "point_wealth_reconciliation_max_gdp_pp": 1.1102230246251565e-16,
+      "other_channels_max_change_gdp_pp": 0.0,
+      "draw_wealth_reconciliation_max_log_growth": 4.336808689942018e-19,
+      "joint_draws_retained": 399
+    },
+    {
+      "model": "log_ecm",
+      "variant": "price_control_only",
+      "split_start": "2022Q1",
+      "point_wealth_reconciliation_max_gdp_pp": 1.1102230246251565e-16,
+      "other_channels_max_change_gdp_pp": 0.0,
+      "draw_wealth_reconciliation_max_log_growth": 8.673617379884035e-19,
+      "joint_draws_retained": 399
+    },
+    {
+      "model": "log_ecm",
+      "variant": "price_control_only",
+      "split_start": "2023Q1",
+      "point_wealth_reconciliation_max_gdp_pp": 1.1102230246251565e-16,
+      "other_channels_max_change_gdp_pp": 0.0,
+      "draw_wealth_reconciliation_max_log_growth": 4.336808689942018e-19,
+      "joint_draws_retained": 399
+    }
+  ],
+  "new_estimation_calls": 0,
+  "api_calls": 0,
+  "original_base": "1989Q4",
+  "primary_split_base": "2021Q4",
+  "unexplained_or_residual_wealth_is_not_housing_only": true,
+  "uncertainty": "399 saved joint two-stage coefficient vectors per model; exploratory conditional percentile intervals; ownership, basket, baseline and vintage are held fixed within each scenario",
+  "observational_status": "Actual aggregate quarterly observations; user-supplied market-cap classification and household-incidence mapping are not separately estimated",
+  "replication_status": "Extension of the ECM adaptation, not a new Banque de France numerical replication or identified AI causal effect",
+  "source_status": "AI/non-AI source capitalization observations and the detailed gain ledger are excluded from public Git. Local inputs are required for reproducing historical AI outputs. Public code, charts and derived ECM estimates are retained.",
+  "gdp_interpretation": "Gross consumption-channel allocation of published PCE GDP contribution; no imports or general-equilibrium offsets",
+  "gdp_vintage": "August 26, 2026 frozen baseline; existing AI inputs from later September snapshot",
+  "ecm_diagnostics": "Log cointegration null not rejected (p about .883); residual serial correlation remains in both forms; ratio cointegration not formally validated"
+}

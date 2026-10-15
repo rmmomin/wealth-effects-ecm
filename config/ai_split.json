@@ -1,0 +1,26 @@
+{
+  "data": {
+    "panel": "data/quarterly_panel.csv",
+    "gdp": "data/gdp_accounting.csv",
+    "bootstrap": "data/bootstrap_parameters.csv",
+    "coefficients": "results/coefficients.csv",
+    "capitalization": "data/spx_ai_split_inputs.csv",
+    "provenance": "data/spx_ai_split_sources.json"
+  },
+  "ecm_config": "config/ecm.json",
+  "decomposition_start": "1990Q1",
+  "split_start": "2022Q1",
+  "sensitivity_split_start": "2023Q1",
+  "data_end": "2026Q2",
+  "variants": [
+    "ownership_bridge",
+    "price_control_only"
+  ],
+  "bootstrap_draws": 399,
+  "confidence_level": 0.95,
+  "ownership_timing": "lagged one quarter",
+  "market_cap_total_divisor": 1000,
+  "fit_new_parameters": false,
+  "display_start": "2023Q1",
+  "display_model": "ratio_ecm"
+}
