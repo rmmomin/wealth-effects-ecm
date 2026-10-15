@@ -1,4 +1,4 @@
-"""Create GDP and three-part wealth column charts from public saved outputs."""
+"""Create stacked GDP, three-part wealth and growth-share charts from public outputs."""
 import argparse
 import json
 from pathlib import Path

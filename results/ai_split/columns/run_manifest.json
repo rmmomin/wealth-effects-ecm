@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-10-15T13:29:27.745269+00:00",
+  "created_utc": "2026-10-15T14:30:28.029091+00:00",
   "model": "ratio_ecm",
   "display_start": "2023Q1",
   "display_end": "2026Q2",
@@ -12,18 +12,22 @@
     "config/ai_split.json": "10e002374dea9139e49c08ea5fb28297bc4d762b6b277bd312653a8b525639f0"
   },
   "source_sha256": {
-    "wealth_effects/ecm_column_charts.py": "7567c455791e185ef58c4ff1975264d0243a8bf9b05e129502a8d8deb7402800",
-    "scripts/plot_ecm_columns.py": "296acd95fa36c0a55c248e0062d56b43ab0402a4c52e766e7f0ef359cd01919e"
+    "wealth_effects/ecm_column_charts.py": "617afcf7db8098ff35c2d17597e102da2d142034585ef740e1ebf8844682210f",
+    "scripts/plot_ecm_columns.py": "20f6ffe7057951ca56b1d36450e7f9878c65191ac9b699adee6ccc51b1fb4469"
   },
   "private_capitalization_inputs_read": false,
   "new_estimation_calls": 0,
   "api_calls": 0,
+  "wealth_growth_share_formula": "100 * wealth_gdp_contribution_pp / observed_real_gdp_growth_saar_pct",
+  "zero_growth_tolerance_pct": 1e-10,
   "output_sha256": {
-    "README.md": "fa098cda06bb5dc9551e1802fa8f011f1f0369d9da9fabb2e6f55a45787f13ad",
-    "column_chart_data.csv": "bf509aca6cd6385b82d01971ae9e6933d0c8c53d7bc330a127bd241f2e2f46ed",
-    "gdp_with_without_wealth.pdf": "3d7d80f1cb87dda084eb55ac9bbd7194f9f7f9097e4b96a47b0f8c0a0cfc91d4",
-    "gdp_with_without_wealth.png": "f3a8b7120b0310411a2c3aa935bd5c0cc6e54c423434419bb6ecd565532a212c",
-    "wealth_ai_non_ai_other.pdf": "5392591733e4035f4cf3dcda4b660e97118de12372ad05c515bbc890485d8f7a",
-    "wealth_ai_non_ai_other.png": "064db2bf064b8014a4b36d154a9f8486be88a47501405b21f008a7af5fc27ffb"
+    "README.md": "62ea30cac79ec3c4c37c7ad719072e11db0769009ea1362ba385e24e0d43be21",
+    "column_chart_data.csv": "e697276371ee5371299e9b3661473cb57a225b1540aefdcf1c13fee45dc877b7",
+    "gdp_with_without_wealth.pdf": "33976317d82a6a66343113fa4e2777726f1400e0022074bd6e835018ef6539ac",
+    "gdp_with_without_wealth.png": "e7536543dbbe00d97ec411f89ed34293272b0e5da702331fe8fc9da38dad6c9f",
+    "wealth_ai_non_ai_other.pdf": "cd18c571077a8cca2417d299304705a7a4f0554885c27ae6622a08b839c1f3eb",
+    "wealth_ai_non_ai_other.png": "064db2bf064b8014a4b36d154a9f8486be88a47501405b21f008a7af5fc27ffb",
+    "wealth_share_of_gdp_growth.pdf": "cba13d22e140ab8b87c72e59d9398c39ac92afad0af4111c7650854e1a9275a3",
+    "wealth_share_of_gdp_growth.png": "a196e9fc68c6c920417d97740d5bd4aeffa71aa7caea678486fcfeb3c3319479"
   }
 }

@@ -347,13 +347,20 @@ or discard the effects of 2022 changes.
 
 ## Column charts from public results
 
-Run `python scripts/plot_ecm_columns.py` to produce the [two column-chart sets](../results/ai_split/columns/README.md)
+Run `python scripts/plot_ecm_columns.py` to produce the [GDP and wealth charts](../results/ai_split/columns/README.md)
 from public saved results and GDP data, without reading the excluded capitalization input.
-The first compares observed annualized quarterly real GDP growth with observed
-growth minus the estimated wealth contribution. This subtraction is an accounting
+The first stacks the estimated wealth contribution with observed annualized
+quarterly growth minus that contribution. Diamonds show observed net GDP growth,
+including when components have opposite signs. This subtraction is an accounting
 adjustment, not a causal counterfactual. The second combines `index_cap_basis`
 and `unallocated_wealth` into **other**, so AI-linked S&P, non-AI-linked S&P and
 other sum to the original wealth contribution. Other is not housing alone.
+A third chart shows `100 × wealth contribution (pp) / observed GDP growth (%)`.
+It preserves the signed denominator: a positive wealth contribution during
+contraction gives a negative ratio because it cushions the decline. Ratios
+above100% mean the rest of GDP makes a negative net contribution. Ratios are
+undefined when absolute annualized GDP growth is at most1e-10%, and line
+connections are broken around negative-growth quarters; no values are clipped.
 
 ## Reproduce and inspect
 
