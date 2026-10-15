@@ -97,3 +97,16 @@
 # Keep the user-supplied AI/non-AI source series and detailed gain ledger local.
 /data/spx_ai_split_inputs.csv
 /results/ai_split/capitalization_ownership_ledger.csv
+
+# Public charts made only from saved model outputs and public GDP data.
+!/wealth_effects/ecm_column_charts.py
+!/scripts/plot_ecm_columns.py
+!/results/ai_split/columns/
+/results/ai_split/columns/*
+!/results/ai_split/columns/README.md
+!/results/ai_split/columns/column_chart_data.csv
+!/results/ai_split/columns/gdp_with_without_wealth.png
+!/results/ai_split/columns/gdp_with_without_wealth.pdf
+!/results/ai_split/columns/wealth_ai_non_ai_other.png
+!/results/ai_split/columns/wealth_ai_non_ai_other.pdf
+!/results/ai_split/columns/run_manifest.json

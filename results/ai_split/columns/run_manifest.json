@@ -1,0 +1,29 @@
+{
+  "created_utc": "2026-10-15T13:29:27.745269+00:00",
+  "model": "ratio_ecm",
+  "display_start": "2023Q1",
+  "display_end": "2026Q2",
+  "allocation_baseline": "2021Q4",
+  "input_sha256": {
+    "results/ai_split/quarterly_wealth_split.csv": "28d07f0e8236b5c566af94876a6434dca895a167b195f5fda9dd23976cd86d3b",
+    "data/gdp_accounting.csv": "4abfefe44d2c0d820aeba79e95f62a103856f87cb63fab2ff5cfb99a0a95c449"
+  },
+  "configuration_sha256": {
+    "config/ai_split.json": "10e002374dea9139e49c08ea5fb28297bc4d762b6b277bd312653a8b525639f0"
+  },
+  "source_sha256": {
+    "wealth_effects/ecm_column_charts.py": "7567c455791e185ef58c4ff1975264d0243a8bf9b05e129502a8d8deb7402800",
+    "scripts/plot_ecm_columns.py": "296acd95fa36c0a55c248e0062d56b43ab0402a4c52e766e7f0ef359cd01919e"
+  },
+  "private_capitalization_inputs_read": false,
+  "new_estimation_calls": 0,
+  "api_calls": 0,
+  "output_sha256": {
+    "README.md": "fa098cda06bb5dc9551e1802fa8f011f1f0369d9da9fabb2e6f55a45787f13ad",
+    "column_chart_data.csv": "bf509aca6cd6385b82d01971ae9e6933d0c8c53d7bc330a127bd241f2e2f46ed",
+    "gdp_with_without_wealth.pdf": "3d7d80f1cb87dda084eb55ac9bbd7194f9f7f9097e4b96a47b0f8c0a0cfc91d4",
+    "gdp_with_without_wealth.png": "f3a8b7120b0310411a2c3aa935bd5c0cc6e54c423434419bb6ecd565532a212c",
+    "wealth_ai_non_ai_other.pdf": "5392591733e4035f4cf3dcda4b660e97118de12372ad05c515bbc890485d8f7a",
+    "wealth_ai_non_ai_other.png": "064db2bf064b8014a4b36d154a9f8486be88a47501405b21f008a7af5fc27ffb"
+  }
+}

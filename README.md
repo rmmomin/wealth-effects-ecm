@@ -109,6 +109,13 @@ The original public-data ECM remains reproducible without this additional input.
 .venv/bin/python scripts/run_ai_ecm_split.py
 ```
 
+[GDP growth with/without the wealth allocation and three-part wealth column charts](results/ai_split/columns/README.md)
+can be reproduced from the public saved outputs, without the excluded market-cap inputs:
+
+```bash
+.venv/bin/python scripts/plot_ecm_columns.py
+```
+
 [Quarterly estimates](results/ai_split/quarterly_wealth_split.csv),
 [period summaries](results/ai_split/period_summary.csv),
 [results and limitations](results/ai_split/RESULTS.md), and

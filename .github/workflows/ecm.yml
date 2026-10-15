@@ -23,3 +23,5 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Reproduce from the shipped derived inputs
         run: python scripts/run_ecm.py --output /tmp/reproduced-ecm
+      - name: Reproduce column charts from public model outputs
+        run: python scripts/plot_ecm_columns.py --output /tmp/reproduced-ecm-columns

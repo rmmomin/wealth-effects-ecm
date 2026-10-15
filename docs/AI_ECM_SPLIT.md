@@ -345,6 +345,16 @@ baseline, and all quarterly estimates from 2022Q1 and the log-model sensitivity
 remain in the CSV exports. A 2023Q1 display cutoff does not reset the model
 or discard the effects of 2022 changes.
 
+## Column charts from public results
+
+Run `python scripts/plot_ecm_columns.py` to produce the [two column-chart sets](../results/ai_split/columns/README.md)
+from public saved results and GDP data, without reading the excluded capitalization input.
+The first compares observed annualized quarterly real GDP growth with observed
+growth minus the estimated wealth contribution. This subtraction is an accounting
+adjustment, not a causal counterfactual. The second combines `index_cap_basis`
+and `unallocated_wealth` into **other**, so AI-linked S&P, non-AI-linked S&P and
+other sum to the original wealth contribution. Other is not housing alone.
+
 ## Reproduce and inspect
 
 From the repository root, after installing `requirements-ecm.txt`:
