@@ -158,11 +158,11 @@ Those difference terms are estimation controls. The equilibrium consumption
 target uses only the fitted level coefficients:
 
 $$
-C_t^*=T_t+\widehat\alpha(Y_t-T_t)
+C_t^{\ast}=T_t+\widehat\alpha(Y_t-T_t)
  +\frac{\widehat\beta_{80}W_{80,t}
         +\widehat\beta_{20}W_{20,t}}{4},
 \qquad
-ECT_t^{\mathrm{ratio}}=\log C_t-\log C_t^*.
+ECT_t^{\mathrm{ratio}}=\log C_t-\log C_t^{\ast}.
 $$
 
 Thus $\beta_j$ measures **annual consumption dollars per wealth-stock
@@ -241,7 +241,7 @@ conditions, which also retain $\widehat\lambda ECT_0$ each quarter.
 
 For the nonlinear ratio target, define income bundle $I_t=(Y_t,T_t)$,
 wealth bundle $W_t=(W_{80,t},W_{20,t})$, and
-$f(I,W)=\log C^*(I,W)$. The wealth target change averages the two possible
+$f(I,W)=\log C^{\ast}(I,W)$. The wealth target change averages the two possible
 orders of updating income and wealth:
 
 $$

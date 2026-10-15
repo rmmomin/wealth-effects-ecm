@@ -22,4 +22,4 @@ jobs:
       - name: Numerical and artifact tests
         run: python -m unittest discover -s tests -v
       - name: Reproduce from the shipped derived inputs
-        run: python scripts/run_ecm.py --output-dir /tmp/reproduced-ecm
+        run: python scripts/run_ecm.py --output /tmp/reproduced-ecm

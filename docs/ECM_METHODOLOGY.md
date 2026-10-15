@@ -68,7 +68,7 @@ No 2020 observation enters a lead. The difference terms are estimation
 controls and do not enter the static equilibrium target:
 
 $$
-C_t^*=T_t+\alpha(Y_t-T_t)
+C_t^{\ast}=T_t+\alpha(Y_t-T_t)
  +\frac{\beta_{80}W_{80,t}+\beta_{20}W_{20,t}}{4}.
 $$
 
@@ -80,7 +80,7 @@ the separately estimated short-run transfer coefficients.
 The second-stage equilibrium error is:
 
 $$
-ECT_t^{ratio}=\log C_t-\log C_t^*.
+ECT_t^{ratio}=\log C_t-\log C_t^{\ast}.
 $$
 
 All relevant target values must be positive. Invalid targets raise errors;
@@ -151,7 +151,7 @@ arbitrary absolute log levels to wealth contributions.
 
 The ratio target is nonlinear after taking logs. Its change from the baseline
 is allocated between two bundles—income/transfers and wealth—using a
-two-bundle Shapley calculation. If $f(I,W)=\log C^*(I,W)$, the wealth share is:
+two-bundle Shapley calculation. If $f(I,W)=\log C^{\ast}(I,W)$, the wealth share is:
 
 $$
 s_{W,t}=\tfrac12\{f(I_0,W_t)-f(I_0,W_0)
